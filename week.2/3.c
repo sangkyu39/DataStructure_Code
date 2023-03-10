@@ -11,7 +11,7 @@ int * prefixAverages1(int *x, int n){
     for (int j = 0;j <= i;j++){
       sum += x[j];
     }
-    arr[i] = sum / (i + 1);
+    arr[i] = sum / (i + 1.0) + 0.5;
   }
 
   return arr;
@@ -23,7 +23,7 @@ int *prefixAverages2(int *x, int n){
   
   for (int i = 0;i < n;i++){
     sum += x[i];
-    arr[i] = sum / (i + 1);
+    arr[i] = sum / (i + 1.0) + 0.5;
   }
 
   return arr;
