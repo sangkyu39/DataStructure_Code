@@ -4,7 +4,7 @@
 #include <time.h>
 
 int modulo(int a, int b) {
-  while (a > b) {
+  while (a >= b) {
     a -= b;
   }
   return a;
