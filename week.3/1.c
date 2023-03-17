@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 int sum(int n) {
+	
 	if (n == 1) {
 		return 1;
 	}
