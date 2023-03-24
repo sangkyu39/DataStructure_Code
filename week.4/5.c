@@ -11,18 +11,13 @@ int main() {
 	int add_x = 0, add_y = 0;
 
 	for (int i = 1; i <= n * m; i++) {
-		//1. x 축으로 이동하는 경우  
+
 		arr[y + add_y++][x - add_x++] = i;
-		if ((add_x > x || y + add_y == n) && (x < m - 1)) {
-			x += 1;
+ 
+		if ((add_x > x || y + add_y == n)) {
 			add_x = 0;
 			add_y = 0;
-		}
-		//2. y 축으로 이동하는 경우 
-		else if ((add_x > x || y + add_y == n) && (x == m - 1)) {
-			y += 1;
-			add_x = 0;
-			add_y = 0;
+			(x == m - 1) ? y++ : x++;
 		}
 	}
 
