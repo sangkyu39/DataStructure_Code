@@ -26,11 +26,12 @@ void add(List* list, int rank, char elem) {
 	Node* node = (Node*)calloc(1, sizeof(Node));
 	Node* back = list->header;
 
-	while (--rank && node->next != list->trailer) {
+	while (--rank && (back != list->trailer)) {
 		back = back->next;
 	}
 
 	if (back == list->trailer) {
+		printf("invalid position\n");
 		return 0;
 	}
 
@@ -46,11 +47,12 @@ void add(List* list, int rank, char elem) {
 void delete(List* list, int rank) {
 	Node* del_node = list->header;
 	
-	while (rank-- && del_node->next != list->trailer) {
+	while (rank-- && (del_node != list->trailer)) {
 		del_node = del_node->next;
 	}
 
-	if (del_node == list->trailer) {
+	if ((del_node == list->trailer) || (del_node == list->header)) {
+		printf("invalid position\n");
 		return 0;
 	}
 
@@ -63,11 +65,12 @@ void delete(List* list, int rank) {
 char get(List* list, int rank) {
 	Node* get_node = list->header;
 
-	while (rank-- && get_node->next != list->trailer) {
+	while (rank-- && (get_node != list->trailer)) {
 		get_node = get_node->next;
 	}
 
-	if (get_node == list->trailer) {
+	if ((get_node == list->trailer) || (get_node == list->header)) {
+		printf("invalid position\n");
 		return 0;
 	}
 
@@ -102,35 +105,22 @@ int main() {
 		if (choice == 'A') {
 			scanf("%d %c", &rank, &eng);
 			getchar();
-			if ((cnt + 1 < rank) || (0 >= rank)) {
-				printf("invalid position\n");
-			}
-			else {
-				add(&list, rank, eng);
-				cnt++;
-			}
+
+			add(&list, rank, eng);
 		}
 		else if (choice == 'D') {
 			scanf("%d", &rank);
 			getchar();
-			if ((cnt < rank) || (0 >= rank)) {
-				printf("invalid position\n");
-			}
 
-			else {
-				delete(&list, rank);
-				cnt--;
-			}
+			delete(&list, rank);		
 		}
 		else if (choice == 'G') {
 			scanf("%d", &rank);
 			getchar();
-			if ((cnt < rank) || (0 >= rank)) {
-				printf("invalid position\n");
-			}
+			char eng = get(&list, rank);
 
-			else {
-				printf("%c\n", get(&list, rank));
+			if (eng) {
+				printf("%c\n", eng);
 			}
 		}
 		else if (choice == 'P') {
