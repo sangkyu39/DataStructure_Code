@@ -89,37 +89,54 @@ int main() {
 	init(&list);
 
 	char eng;
-	int n, rank;
-	while (1) {
-		printf("(1) add eng\n(2) del eng\n(3) get eng\n(4) print eng\n(0) EXIT\n");
-		scanf("%d", &n);
+	int rank, cnt = 0, n;
+	char choice;
+
+	scanf("%d", &n);
+	getchar();
+
+	for (int i = 0;i < n;i++) {
+		scanf("%c", &choice);
 		getchar();
-		if (n == 0) {
-			break;
+
+		if (choice == 'A') {
+			scanf("%d %c", &rank, &eng);
+			getchar();
+			if ((cnt + 1 < rank) || (0 >= rank)) {
+				printf("invalid position\n");
+			}
+			else {
+				add(&list, rank, eng);
+				cnt++;
+			}
 		}
-		else if (n == 1) {
-			printf("put eng :");
-			scanf("%c", &eng);
-			printf("put rank :");
+		else if (choice == 'D') {
 			scanf("%d", &rank);
 			getchar();
-			add(&list, rank, eng);
+			if ((cnt < rank) || (0 >= rank)) {
+				printf("invalid position\n");
+			}
+
+			else {
+				delete(&list, rank);
+				cnt--;
+			}
 		}
-		else if (n == 2) {
-			printf("put del rank :");
+		else if (choice == 'G') {
 			scanf("%d", &rank);
 			getchar();
-			delete(&list, rank);
+			if ((cnt < rank) || (0 >= rank)) {
+				printf("invalid position\n");
+			}
+
+			else {
+				printf("%c\n", get(&list, rank));
+			}
 		}
-		else if (n == 3) {
-			printf("put get rank :");
-			scanf("%d", &rank);
-			getchar();
-			printf("%c\n",get(&list, rank));
-		}
-		else if (n == 4) {
+		else if (choice == 'P') {
 			print(&list);
 			printf("\n");
+			
 		}
 	}
 			
