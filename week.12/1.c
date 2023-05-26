@@ -7,7 +7,7 @@ typedef struct Node {
 } Node;
 
 Node *makeNode(int data, Node *left, Node *right) {
-	Node *p = (Node *) calloc(1, sizeof(Node));
+	Node *p = (Node *)calloc(1, sizeof(Node));
 
 	p->data = data;
 	p->left = left;
