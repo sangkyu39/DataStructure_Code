@@ -31,14 +31,14 @@ void print(Node *p) {
 
 int main() {
   
-	Node *F1 = makeNode(20, F2, F3);
-	Node *F2 = makeNode(30, F4, F5);
-	Node *F3 = makeNode(50, NULL, F6);
-	Node *F4 = makeNode(70, NULL, NULL);
-	Node *F5 = makeNode(90, NULL, NULL);
-	Node *F6 = makeNode(120, F7, F8);
-	Node *F7 = makeNode(130, NULL, NULL);
 	Node *F8 = makeNode(80, NULL, NULL);
+	Node *F7 = makeNode(130, NULL, NULL);
+	Node *F6 = makeNode(120, F7, F8);
+	Node *F5 = makeNode(90, NULL, NULL);
+	Node *F4 = makeNode(70, NULL, NULL);
+	Node *F3 = makeNode(50, NULL, F6);
+	Node *F2 = makeNode(30, F4, F5);
+	Node *F1 = makeNode(20, F2, F3);
 
 	int n;
 	scanf("%d", &n);
