@@ -49,24 +49,18 @@ void post_order (Node *p) {
 }
 
 Node* find_node (Node *p, int id) {
-  Node * target = NULL;
-  if (p->id == id){
+  if (p->id == id || !p){
     return p;
   }
-  if (p->left) {
-    target = find_node(p->left, id);
-    if (target != NULL){
-      return target;
-    }
-  }
-  if (p->right) {
+  
+  Node *target = find_node(p->left, id);
+  
+  if (!target) {
     target = find_node(p->right, id);
-    if (target != NULL){
-      return target;
-    }
   }
   return target;
 }
+
 int main() {
   
 	Node *F8 = makeNode(80, NULL, NULL, 8);
