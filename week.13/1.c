@@ -11,7 +11,7 @@ Node *makeNode(int data, Node *left, Node *right, int id) {
 	Node *p = (Node *)calloc(1, sizeof(Node));
 
 	p->data = data;
-  p->id = id;
+  	p->id = id;
 	p->left = left;
 	p->right = right;
 
